@@ -1,0 +1,7 @@
+    public NightFuryRenderer(EntityRendererProvider.Context renderManager) {
+        super(renderManager, new NightFuryModel());
+        this.shadowRadius = 0.92f;
+        this.addLayer(new NightFuryAlphaLayer<>(this));//ALPHA LAYER!!
+    }
+    
+    //In the super add your layer :)
