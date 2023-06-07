@@ -11,7 +11,7 @@ public class NightFuryAlphaLayer<T extends NightFuryEntity> extends GeoLayerRend
     @Override
     public void render(PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, T entityLivingBaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch){
         Boolean loyal = entityLivingBaseIn.isLoyal();
-        if (TRUE != loyal) {
+        if (TRUE != loyal) { //This boolean is just gonna check a certain thing and if the boolean isnt true then it wont do anything :)
             return;
         }
         RenderType type = RenderType.eyes(NIGHTFURY_ALPHA);
