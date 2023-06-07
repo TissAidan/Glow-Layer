@@ -1,0 +1,22 @@
+public class NightFuryAlphaLayer<T extends NightFuryEntity> extends GeoLayerRenderer<T> {
+
+    protected static final ResourceLocation NIGHTFURY_ALPHA = new ResourceLocation(DragonMod.MOD_ID,"textures/dragon/night_fury/night_fury_alpha.png");//glow texture
+
+    protected static final ResourceLocation NIGHTFURY = new ResourceLocation(DragonMod.MOD_ID,"geo/dragon/nightfury/nightfury.geo.json");//geo model
+
+    public NightFuryAlphaLayer(IGeoRenderer<T> entityRendererIn){
+        super(entityRendererIn);
+    }
+
+    @Override
+    public void render(PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, T entityLivingBaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch){
+        Boolean loyal = entityLivingBaseIn.isLoyal();
+        if (TRUE != loyal) {
+            return;
+        }
+        RenderType type = RenderType.eyes(NIGHTFURY_ALPHA);
+        this.getRenderer().render(this.getEntityModel().getModel(NIGHTFURY),entityLivingBaseIn,partialTicks,type,
+                matrixStackIn,bufferIn,bufferIn.getBuffer(type),packedLightIn, OverlayTexture.NO_OVERLAY,1f,1f,1f,0.8f // 0.8f is how much it would glow so the lower the more glow
+        );
+    }
+}
